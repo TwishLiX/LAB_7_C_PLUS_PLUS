@@ -11,7 +11,9 @@ void basic()
 
 {
 
-	/* Создать стек из целых чисел. Вычислить среднее арифметическое чётных значений элементов стека. Организовать просмотр данных стека. */
+	/* Создать стек из целых чисел.
+	Вычислить среднее арифметическое чётных значений элементов стека.
+	Организовать просмотр данных стека. */
 
 	stack <short> numbers;
 	short amount, number, count = 0;
@@ -177,7 +179,7 @@ void hard()
 
 	queue <short> q;
 	vector <int> temp;
-	short amount, count = 0;
+	short amount, *P1, *P2, count = 0;
 	do
 	{
 		cout << endl << "Input an amount of elements in the queue: ";
@@ -193,25 +195,25 @@ void hard()
 		q.push(temp);
 		cout << temp << " ";
 	}
-	short* P1 = &q.front();
-	short* P2 = &q.back();
+	P1 = &q.front();
+	P2 = &q.back();
 	cout << endl << endl << "Old address of P1 : " << P1;
 	cout << endl << "Old address of P2 : " << P2;
 	cout << endl << endl << "Deleted odd elements : " << endl;
-	for (int i = 0; i < amount; i++)
+	do
 	{
-		if (q.front() % 2 != 0)
+		if (!q.empty() && q.front() % 2 != 0)
 		{
 			cout << q.front() << " ";
 			q.pop();
 			count++;
 		}
-		if (q.front() % 2 == 0)
+		if (!q.empty() && q.front() % 2 == 0)
 			break;
-	}
+	} while (!q.empty());
 	if (count == 0)
 		cout << "none.";
-	if (q.size() == 0)
+	if (q.empty())
 		cout << endl << endl << "NULL NULL";
 	else
 	{
@@ -225,8 +227,8 @@ void hard()
 		}
 		for (int i = 0; i < amount - count; i++)
 			q.push(temp[i]);
-		short* P1 = &q.front();
-		short* P2 = &q.back();
+		P1 = &q.front();
+		P2 = &q.back();
 		cout << endl << endl << "New address of P1 : " << P1;
 		cout << endl << "New address of P2 : " << P2;
 	}
